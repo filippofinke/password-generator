@@ -2,6 +2,9 @@ export default {
   // Header
   passwordGenerator: "Passwort-Generator",
   languageName: "Deutsch",
+  createStrongPasswords: "Erstellen Sie starke, sichere Passwörter",
+  passwordsGeneratedLocally:
+    "Alle Passwörter werden lokal generiert und niemals gespeichert oder übertragen.",
 
   // Password Display
   copyToClipboard: "Kpieren",
@@ -13,6 +16,7 @@ export default {
   includeLowercase: "Kleinbuchstaben",
   includeNumbers: "Zahlen",
   includeSymbols: "Symbole",
+  characterTypes: "Zeichentypen",
 
   // Strength Meter
   strength: "Stärke",
@@ -22,7 +26,7 @@ export default {
   strong: "STARK",
 
   // Button
-  generate: "GENERIEREN",
+  generate: "Generieren",
 
   // Error messages
   selectAtLeastOne: "Bitte wählen Sie mindestens eine Zeichenart aus",

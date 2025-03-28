@@ -23,7 +23,9 @@ export function PasswordOptions({
         max={32}
       />
       <div className="space-y-3">
-        <h3 className="text-sm font-medium text-gray-600">Character Types</h3>
+        <h3 className="text-sm font-medium text-gray-600">
+          {t("characterTypes")}
+        </h3>
         <div className="grid grid-cols-2 gap-3">
           <CharacterTypeCheckbox
             name="useUppercase"

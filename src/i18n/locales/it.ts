@@ -2,6 +2,9 @@ export default {
   // Header
   passwordGenerator: "Generatore di Password",
   languageName: "Italiano",
+  createStrongPasswords: "Crea password forti e sicure",
+  passwordsGeneratedLocally:
+    "Tutte le password sono generate localmente e mai memorizzate o trasmesse.",
 
   // Password Display
   copyToClipboard: "Copia",
@@ -13,6 +16,7 @@ export default {
   includeLowercase: "Minuscole",
   includeNumbers: "Numeri",
   includeSymbols: "Simboli",
+  characterTypes: "Tipi di Caratteri",
 
   // Strength Meter
   strength: "Sicurezza",
@@ -22,7 +26,7 @@ export default {
   strong: "FORTE",
 
   // Button
-  generate: "GENERA",
+  generate: "Genera",
 
   // Error messages
   selectAtLeastOne: "Seleziona almeno un tipo di carattere",
