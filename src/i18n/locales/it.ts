@@ -9,10 +9,10 @@ export default {
 
   // Password Options
   characterLength: "Lunghezza Caratteri",
-  includeUppercase: "Includi Lettere Maiuscole",
-  includeLowercase: "Includi Lettere Minuscole",
-  includeNumbers: "Includi Numeri",
-  includeSymbols: "Includi Simboli",
+  includeUppercase: "Maiuscole",
+  includeLowercase: "Minuscole",
+  includeNumbers: "Numeri",
+  includeSymbols: "Simboli",
 
   // Strength Meter
   strength: "Sicurezza",

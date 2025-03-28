@@ -15,10 +15,7 @@ export function PasswordOptions({
   const { t } = useTranslation();
 
   return (
-    <div className="space-y-6 mb-8 bg-gray-50 p-4 rounded-lg">
-      <h2 className="text-lg font-semibold text-gray-700 border-b border-gray-200 pb-2">
-        {t("passwordGenerator")}
-      </h2>
+    <div className="space-y-6 mb-8 bg-gray-50 p-4 rounded-lg mt-4">
       <LengthSlider
         length={options.length}
         onChange={onOptionChange}
