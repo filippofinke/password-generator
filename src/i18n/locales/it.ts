@@ -25,6 +25,8 @@ export default {
   medium: "MEDIA",
   strong: "FORTE",
 
+  characters: "caratteri",
+
   // Button
   generate: "Genera",
 
