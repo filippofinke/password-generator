@@ -6,6 +6,10 @@ import {
   PasswordOptions as PasswordOptionsType,
 } from "./utils/password";
 import {
+  saveOptionsToLocalStorage,
+  getOptionsFromLocalStorage,
+} from "./utils/localStorage";
+import {
   PasswordDisplay,
   PasswordOptions,
   GenerateButton,
@@ -18,20 +22,26 @@ function App() {
   const [disabled, setDisabled] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState<string>("");
-  const [options, setOptions] = useState<Required<PasswordOptionsType>>({
+
+  const defaultOptions: Required<PasswordOptionsType> = {
     length: 16,
     useUppercase: true,
     useLowercase: true,
     useNumbers: true,
     useSymbols: true,
-  });
+  };
+
+  const [options, setOptions] =
+    useState<Required<PasswordOptionsType>>(defaultOptions);
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
-    setOptions({
+    const updatedOptions = {
       ...options,
       [name]: type === "checkbox" ? checked : Number(value),
-    });
+    };
+    setOptions(updatedOptions);
+    saveOptionsToLocalStorage(updatedOptions);
   };
 
   const handleGeneratePassword = () => {
@@ -40,7 +50,12 @@ function App() {
     setPasswordStrength(calculatePasswordStrength(newPassword));
   };
 
+  // Load options from localStorage on initial render
   useEffect(() => {
+    const savedOptions = getOptionsFromLocalStorage();
+    if (savedOptions) {
+      setOptions(savedOptions);
+    }
     handleGeneratePassword();
   }, []);
 
