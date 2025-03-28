@@ -11,6 +11,9 @@ export function LengthSlider({
   min = 8,
   max = 32,
 }: LengthSliderProps) {
+  // Calculate percentage for gradient
+  const percentage = ((length - min) / (max - min)) * 100;
+
   return (
     <div>
       <div className="flex justify-between items-center text-gray-700 mb-1">
@@ -25,6 +28,9 @@ export function LengthSlider({
         value={length}
         onChange={onChange}
         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500"
+        style={{
+          background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`,
+        }}
       />
     </div>
   );
