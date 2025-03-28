@@ -5,7 +5,6 @@ import en from "./locales/en";
 import it from "./locales/it";
 import de from "./locales/de";
 
-// the translations
 const resources = {
   en: {
     translation: en,
@@ -19,11 +18,11 @@ const resources = {
 };
 
 i18n
-  // detect user language
+
   .use(LanguageDetector)
-  // pass the i18n instance to react-i18next
+
   .use(initReactI18next)
-  // init i18next
+
   .init({
     resources,
     fallbackLng: "en",

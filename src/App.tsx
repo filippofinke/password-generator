@@ -50,7 +50,6 @@ function App() {
     setPasswordStrength(calculatePasswordStrength(newPassword));
   };
 
-  // Load options from localStorage on initial render
   useEffect(() => {
     const savedOptions = getOptionsFromLocalStorage();
     if (savedOptions) {
