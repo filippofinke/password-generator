@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { copyToClipboard } from "../utils/clipboard";
 
 interface CopyButtonProps {
@@ -7,6 +8,7 @@ interface CopyButtonProps {
 }
 
 export function CopyButton({ text, disabled = false }: CopyButtonProps) {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
   const handleCopyToClipboard = () => {
@@ -28,8 +30,9 @@ export function CopyButton({ text, disabled = false }: CopyButtonProps) {
       onClick={handleCopyToClipboard}
       disabled={disabled}
       className="ml-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded-md disabled:opacity-50 transition duration-200 text-sm font-medium flex-shrink-0 cursor-pointer"
+      title={t("copyToClipboard")}
     >
-      {copied ? "Copied!" : "Copy"}
+      {copied ? t("copied") : t("copyToClipboard")}
     </button>
   );
 }

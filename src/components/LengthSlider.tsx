@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface LengthSliderProps {
   length: number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -11,14 +13,15 @@ export function LengthSlider({
   min = 8,
   max = 32,
 }: LengthSliderProps) {
-  // Calculate percentage for gradient
+  const { t } = useTranslation();
   const percentage = ((length - min) / (max - min)) * 100;
 
   return (
     <div>
       <div className="flex justify-between items-center text-gray-700 mb-1">
-        <span className="font-medium">Length: {length}</span>
-        <span className="text-xs text-gray-500">{length} characters</span>
+        <span className="text-xs text-gray-500">
+          {length} {t("characters")}
+        </span>
       </div>
       <input
         type="range"

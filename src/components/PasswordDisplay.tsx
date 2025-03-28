@@ -14,9 +14,7 @@ export function PasswordDisplay({
     <div className="mt-6">
       <div className="p-3 bg-gray-100 rounded-md flex items-center">
         <div className="overflow-x-auto whitespace-nowrap flex-grow">
-          <span className="font-mono select-all">
-            {password || "Click Generate to create a password"}
-          </span>
+          <span className="font-mono select-all">{password}</span>
         </div>
         <CopyButton text={password} disabled={!password} />
       </div>
