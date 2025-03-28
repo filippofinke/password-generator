@@ -8,7 +8,7 @@ export function GenerateButton({ onGenerate, ...rest }: GenerateButtonProps) {
     <button
       {...rest}
       onClick={onGenerate}
-      className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400 text-white py-4 px-6 rounded-lg font-medium transition duration-200 shadow-md hover:shadow-lg disabled:shadow-none flex items-center justify-center"
+      className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400 text-white py-4 px-6 rounded-lg font-medium transition duration-200 shadow-md hover:shadow-lg disabled:shadow-none flex items-center justify-center cursor-pointer"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

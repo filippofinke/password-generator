@@ -15,7 +15,7 @@ function App() {
   const [disabled, setDisabled] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState<string>("");
-  const [options, setOptions] = useState<PasswordOptionsType>({
+  const [options, setOptions] = useState<Required<PasswordOptionsType>>({
     length: 16,
     useUppercase: true,
     useLowercase: true,

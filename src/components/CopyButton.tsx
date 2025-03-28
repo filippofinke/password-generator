@@ -27,7 +27,7 @@ export function CopyButton({ text, disabled = false }: CopyButtonProps) {
     <button
       onClick={handleCopyToClipboard}
       disabled={disabled}
-      className="ml-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded-md disabled:opacity-50 transition duration-200 text-sm font-medium flex-shrink-0"
+      className="ml-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded-md disabled:opacity-50 transition duration-200 text-sm font-medium flex-shrink-0 cursor-pointer"
     >
       {copied ? "Copied!" : "Copy"}
     </button>
