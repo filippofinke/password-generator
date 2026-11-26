@@ -38,7 +38,6 @@ const hasCharacterSet = (options: Required<PasswordOptionsType>) =>
 
 function App() {
   const { t } = useTranslation();
-  const [disabled, setDisabled] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState<string>("");
 
@@ -55,22 +54,23 @@ function App() {
     saveOptionsToLocalStorage(updatedOptions);
   };
 
-  const handleGeneratePassword = () => {
-    if (!hasCharacterSet(options)) return;
-    const newPassword = generateSecurePassword(options);
+  const generatePassword = (opts: Required<PasswordOptionsType>) => {
+    if (!hasCharacterSet(opts)) return;
+    const newPassword = generateSecurePassword(opts);
     setPassword(newPassword);
     setPasswordStrength(calculatePasswordStrength(newPassword));
   };
 
-  // Generate the initial password using the options restored from localStorage.
-  useEffect(() => {
-    handleGeneratePassword();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const handleGeneratePassword = () => generatePassword(options);
 
+  // Generate a new password on first load (using the options restored from
+  // localStorage) and whenever the settings change, so the shown password
+  // always matches the current settings.
   useEffect(() => {
-    setDisabled(!hasCharacterSet(options));
+    generatePassword(options);
   }, [options]);
+
+  const disabled = !hasCharacterSet(options);
 
   return (
     <>
