@@ -17,22 +17,33 @@ import {
 } from "./components";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 
+const defaultOptions: Required<PasswordOptionsType> = {
+  length: 16,
+  useUppercase: true,
+  useLowercase: true,
+  useNumbers: true,
+  useSymbols: true,
+};
+
+const loadInitialOptions = (): Required<PasswordOptionsType> => ({
+  ...defaultOptions,
+  ...(getOptionsFromLocalStorage() ?? {}),
+});
+
+const hasCharacterSet = (options: Required<PasswordOptionsType>) =>
+  options.useUppercase ||
+  options.useLowercase ||
+  options.useNumbers ||
+  options.useSymbols;
+
 function App() {
   const { t } = useTranslation();
   const [disabled, setDisabled] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState<string>("");
 
-  const defaultOptions: Required<PasswordOptionsType> = {
-    length: 16,
-    useUppercase: true,
-    useLowercase: true,
-    useNumbers: true,
-    useSymbols: true,
-  };
-
   const [options, setOptions] =
-    useState<Required<PasswordOptionsType>>(defaultOptions);
+    useState<Required<PasswordOptionsType>>(loadInitialOptions);
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -45,26 +56,20 @@ function App() {
   };
 
   const handleGeneratePassword = () => {
+    if (!hasCharacterSet(options)) return;
     const newPassword = generateSecurePassword(options);
     setPassword(newPassword);
     setPasswordStrength(calculatePasswordStrength(newPassword));
   };
 
+  // Generate the initial password using the options restored from localStorage.
   useEffect(() => {
-    const savedOptions = getOptionsFromLocalStorage();
-    if (savedOptions) {
-      setOptions(savedOptions);
-    }
     handleGeneratePassword();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const isDisabled =
-      !options.useUppercase &&
-      !options.useLowercase &&
-      !options.useNumbers &&
-      !options.useSymbols;
-    setDisabled(isDisabled);
+    setDisabled(!hasCharacterSet(options));
   }, [options]);
 
   return (
